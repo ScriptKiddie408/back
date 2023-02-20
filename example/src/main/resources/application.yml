@@ -1,0 +1,39 @@
+micronaut:
+  server:
+    cors:
+      enabled: true
+    port: 8080
+#      configurations:
+#        web:
+#          exposedHeaders:
+#            - Content-Type
+#            - Authorization
+#            - '*'
+#  security:
+#    enabled: true
+#    authentication: bearer
+#    token:
+#      jwt:
+#        signatures:
+#          secret:
+#            generator:
+#              secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:IdontwannabehereNothinghereforme}"'
+datasources:
+  default:
+    url: jdbc:postgresql://45.10.244.15:55532/work100032 # <1>
+    driverClassName: org.postgresql.Driver # <2>
+    username: work100032
+    password: 'NhPGnpJlTCAEoLtR9~rj'
+    dialect: POSTGRES # <3>
+    schema-generate: NONE # <4>
+liquibase:
+  enabled: true
+  datasources:
+    default:
+      change-log: 'classpath:db/liquibase-changelog.xml'
+endpoints:
+  liquibase:
+    enabled: true
+    sensitive: false
+  health:
+    enabled: true

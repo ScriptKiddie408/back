@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="01" author="Mikuru_Asahina">
+
+        <createTable tableName="assignment_group_template">
+
+            <column name="id" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="templatePK"/>
+            </column>
+
+            <column name="diagnosis_in_which_prescribed" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="mandatory" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="consultation_protocol">
+
+            <column name="id_protocol" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="protocolPK"/>
+            </column>
+
+            <column name="date_protocol" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="employee_number" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             foreignKeyName="employee_number_FK"/>
+            </column>
+
+            <column name="inspection_result" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="basic_diagnosis" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="basic_diagnosis_complication" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="concomitant_diseases" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="assigned_research" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="criteria_applying_template">
+
+            <column name="id_criteria" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="id_criteria_PK"/>
+            </column>
+
+            <column name="age" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="gender" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="diagnosis" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="speciality_name" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="doctors">
+
+            <column name="employee_number" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="employee_number_PK"/>
+            </column>
+
+            <column name="surname" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="patronymic" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cabinet" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="id_s" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             foreignKeyName="id_s_FK"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="frequency_of_the_study">
+
+            <column name="id_frequency" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="frequency_PK"/>
+            </column>
+
+            <column name="frequency" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="patient">
+
+            <column name="snils" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="snils_PK"/>
+            </column>
+
+            <column name="surname" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="name" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="patronymic" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date_of_birth" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="gender" type="INT">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="research_results">
+
+            <column name="id_research" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="id_research_PK"/>
+            </column>
+
+            <column name="research" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="date_research" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="result_research" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="snils" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             foreignKeyName="snils_FK"/>
+            </column>
+
+        </createTable>
+
+        <createTable tableName="speciality">
+            <column name="id_s" type="INT">
+                <constraints nullable="false" unique="true" primaryKey="true" primaryKeyName="id_s_PK"/>
+            </column>
+            <column name="speciality_name" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="studies_included_template">
+
+            <column name="id_studies_template" type="INT">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="id_studies_template_PK"/>
+            </column>
+
+            <column name="research" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+    </changeSet>
+
+</databaseChangeLog>
